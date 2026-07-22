@@ -47,6 +47,38 @@
 		@-webkit-keyframes preloader_spin { 0% {-webkit-transform: rotate(0deg);} 100% {-webkit-transform: rotate(360deg);}}
     </style>
 </head>
+	<div id="closeButton" style="
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: #ff4444;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+">×</div>
+
+<script>
+document.getElementById('closeButton').addEventListener('click', function() {
+    // Browser tab ကိုပိတ်ခြင်း
+    if (window.opener && !window.opener.closed) {
+        window.close();
+    } else {
+        // Alternative method
+        window.history.length > 1 ? window.history.back() : window.close();
+    }
+});
+
+// ဒါမှမဟုတ် parent window ကိုပြန်ပို့ခြင်း
+// window.parent.postMessage('closePresentation', '*');
+</script>
+
 <body>
 	<div id="preloader"></div>
 	<script src="data/browsersupport.js?9D2FA565"></script>
